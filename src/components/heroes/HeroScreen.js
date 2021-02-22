@@ -41,7 +41,7 @@ export const HeroScreen = ({ history }) => {
                 />
             </div>
 
-            <div className="col-8 animate__animated animate__fadeIn">
+            <div className="col-8 animate__animated animate">
 
                 <h3> { superhero } </h3>
                 <ul className="list-group list-group-flush">

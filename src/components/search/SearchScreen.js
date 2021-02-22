@@ -1,17 +1,22 @@
-import React from 'react';
+import React, { useMemo } from 'react';
+import queryString from 'query-string';
+import { useLocation } from 'react-router-dom';
 import { heroes } from '../../data/heroes';
 import { useForm } from '../../hooks/useForms';
 import { HeroCard } from '../heroes/HeroCard';
 
-export const SearchScreen = () => {
+export const SearchScreen = ({ history }) => {
 
-    const heroesFilter = heroes;
-    const [ formValues, handleInputChange ] = useForm( { searchText:'' } );
+    const location = useLocation();
+    const { q = '' } = useMemo(() => queryString.parse( location.search ), [location.search]);
+
+    const [ formValues, handleInputChange ] = useForm( { searchText: q } );
     const { searchText } = formValues;
-
+    const heroesFilter = heroes;
+    
     const handleSearch = (e) => {
         e.preventDefault();
-        console.log( searchText );
+        history.push( `?q=${ searchText }` );
     }
 
     return (
