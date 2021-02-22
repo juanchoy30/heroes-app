@@ -7,7 +7,7 @@ export const HeroList = ({ publisher }) => {
     const heroes = useMemo(() => getHeroesByPublisher( publisher ), [ publisher ]);
     // useMemo optimises the process because avoids rendering again the view everytime there is a change, only lets changing when publishes changes.
     return (
-        <div className="row">
+        <div className="row animate__animated animate__fadeIn">
             {
                 heroes.map( hero => (
                     <HeroCard 
