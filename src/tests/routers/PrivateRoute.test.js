@@ -1,7 +1,7 @@
 import React from 'react';
 import Adapter from '@wojtekmaj/enzyme-adapter-react-17'; // *1
 import { mount, configure } from 'enzyme'; // *1
-import { MemoryRouter } from 'react-router-dom';
+import { MemoryRouter, Switch } from 'react-router-dom';
 import { PrivateRoute } from '../../routers/PrivateRoute';
 
 configure({adapter: new Adapter()}); 
@@ -16,6 +16,8 @@ describe('<PrivateRoute /> Tests', () => {
             pathname: '/marvel'
         }
     }
+
+    Storage.prototype.setItem = jest.fn();
     
     test('should show the component if authenitcated, and then save in localStorage', () => {
         
@@ -30,6 +32,7 @@ describe('<PrivateRoute /> Tests', () => {
         );
 
         expect( wrapper.find('span').exists() ).toBe( true );
+        expect( localStorage.setItem ).toHaveBeenCalledWith('lastPath', '/marvel');
 
     });
     
