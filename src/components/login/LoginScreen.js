@@ -8,9 +8,7 @@ export const LoginScreen = ({ history }) => {
 
     const handleLogin = () => {
 
-        const lastPath = localStorage.getItem('lastPath')
-            .concat( localStorage.getItem('searchQuery') ) 
-            || '/';
+        const lastPath = localStorage.getItem('lastPath') || '/';
 
         dispatch({
             type: types.login,

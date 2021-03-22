@@ -1,13 +1,8 @@
 import React from 'react';
-import Adapter from '@wojtekmaj/enzyme-adapter-react-17'; // *1
-import { mount, configure } from 'enzyme'; // *1
+import { mount } from 'enzyme'; 
 import { MemoryRouter } from 'react-router-dom';
 import { PrivateRoute } from '../../routers/PrivateRoute';
 
-configure({adapter: new Adapter()}); 
-
-// *1 This feature was not in the course. I found it on stackOverFlow, It seems to be
-// a problem with the wojtekmaj adapter patch for enzima-react17. 
 
 describe('<PrivateRoute /> Tests', () => {
 
